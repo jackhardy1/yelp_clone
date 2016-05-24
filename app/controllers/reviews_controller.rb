@@ -5,4 +5,14 @@ class ReviewsController < ApplicationController
     @review = Review.new
     redirect_to restaurants_path
   end
+
+  def create
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant.reviews.create(review_params)
+  end
+
+  def review_params
+    params.require(:review).permit(:thoughts, :rating)
+  end
+
 end
