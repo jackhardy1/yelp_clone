@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'rspec-collection_matchers'
 end
 
 # helps us test some of those hard to reach parts
