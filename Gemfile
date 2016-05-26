@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
+gem 'dotenv-rails'
 
+gem 'haml-rails'
+gem 'omniauth-facebook'
+gem 'haml'
 #devise is a complete MVC solution. Flexible authentication solution for rails
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -38,6 +42,7 @@ group :test do
   gem 'capybara'
   gem 'shoulda'
   gem 'rspec-collection_matchers'
+
 end
 
 group :development, :test do
@@ -51,8 +56,6 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'haml'
-  gem 'haml-rails'
-  gem 'dotenv-rails'
-  gem 'omniauth-facebook'
+
+
 end
