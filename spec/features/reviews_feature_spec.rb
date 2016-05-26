@@ -3,6 +3,16 @@ require 'rails_helper'
 feature 'reviewing' do
 	before { Restaurant.create(name: 'KFC') }
 
+context 'user is signed in' do
+	before do
+        visit('/')
+        click_link('Sign up')
+        fill_in('Email', with: 'sity@pop.com')
+        fill_in('Password', with: 'secret')
+        fill_in('Password confirmation', with: 'secret')
+        click_button('Sign up')
+    end
+
 	scenario 'allows users to leave a review using a form' do
 		visit '/restaurants'
 		click_link 'Review KFC'
@@ -13,11 +23,13 @@ feature 'reviewing' do
 		expect(page).to have_content("so so")
 		expect(current_path).to eq("/restaurants")
 	end
+end
 
 	context 'user is not signed in' do
-		it 'should not see review restaurant' do
-			visit('/')
-			expect(page).not_to have_link 'Review KFC'
+		it 'should not see be able to review restaurant' do
+			visit '/restaurants'
+			click_link 'Review KFC'
+			expect(page).to have_link 'Sign up'
 		end
 	end
 end
